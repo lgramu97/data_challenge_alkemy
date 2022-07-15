@@ -1,1 +1,0 @@
-# data_challenge_alkemy
