@@ -1,6 +1,6 @@
-from cfg import DB_CONNSTR
+from utils.cfg import DB_CONNSTR
 from sqlalchemy import create_engine
-from constants import TABLES, SQL_SRC
+from utils.constants import TABLES, SQL_SRC
 import logging
 import os
 

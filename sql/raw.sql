@@ -1,4 +1,5 @@
 CREATE TABLE raw (
+    job_date date NOT NULL, 
     cod_localidad int NOT NULL,
     id_provincia int NOT NULL,
     id_departamento int NOT NULL,

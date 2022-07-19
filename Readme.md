@@ -4,6 +4,7 @@
 - Objetive:
 
 * 3 data sources.
+
     -> Cinema
     -> Museum
     -> Library
@@ -11,24 +12,29 @@
 * Create SQL database.
 
 
-## Prerequisites 
+# Prerequisites 
 
 
 ## Run DOCKER postgres.
 
 Create container and volume.
 
-*docker run -d --name data_challenge -v postgres_data:/var/lib/postgresql/data -p 5433:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=data_analitycs_challenge postgres*
+    docker run -d --name data_challenge -v postgres_data:/var/lib/postgresql/data -p 5433:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=data_analitycs_challenge postgres
 
-> -p localHost:dockerHost
+>-p localHost:dockerHost
 
-Start exited:
+Start if exited:
 
-*docker start data_challenge*
+    docker start data_challenge
 
 Execute command on container
 
-*docker exec -it data_challenge psql -h localhost -U postgres -p 5432 -W -d data_analitycs_challenge*
+    docker exec -it data_challenge psql -h localhost -U postgres -p 5432 -W -d data_analitycs_challenge
 
 > -W, --password           force password prompt (should happen automatically)
+
 > -d, --dbname=DBNAME      database name to connect to (default: "root")
+
+
+# Usage
+
