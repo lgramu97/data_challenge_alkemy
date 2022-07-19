@@ -9,7 +9,7 @@ CREATE TABLE raw (
     nombre varchar(255) NOT NULL,
     domicilio varchar(255) NOT NULL,
     codigo_postal varchar(255) NOT NULL,
-    numero_de_telefono int NOT NULL,
+    numero_de_telefono varchar(255) NOT NULL,
     mail varchar(255) NOT NULL,
     web varchar(255) NOT NULL
 );

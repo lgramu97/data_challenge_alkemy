@@ -2,7 +2,7 @@ import logging
 import pandas as pd
 from utils.cfg import CINE_URL, MUSEO_URL, BIBLIOTECA_URL
 from utils.data_extractors import MuseumExtractor, CinemaExtractor, LibraryExtractor
-import numpy as np
+from utils.data_load import LoadCinema,LoadSource,LoadTotalCategoryRegisters,LoadUnifiedCatProv, Loader
 
 extractors = { 'museum' : MuseumExtractor(MUSEO_URL,'museum'),
                'cinema' :CinemaExtractor(CINE_URL,'cine'),
@@ -33,38 +33,6 @@ def transform(df_extract):
     return df_out
 
 
-def load():
-    pass
-
-def combined_df(df:pd.DataFrame):
-    log.info('Creating total category registers dataframe.')
-    df_total_category_registers = df.groupby('categoria',as_index=False).size()
-    df_total_category_registers = df_total_category_registers.rename(columns={'size':'total'})
-    
-    log.info('Creating total category province registers dataframe.')
-    df_unified_cat_prov = df.groupby(['categoria','provincia'],as_index=False).size()
-    df_unified_cat_prov = df_unified_cat_prov.rename(columns={'size':'total'})
-    
-    return df_total_category_registers, df_unified_cat_prov
-
-
-def source_df(dict_df):
-    dict_source = {'source': [], 'total':[]}
-    
-    for key,value in dict_df.items():
-        dict_source['source'].append(key)
-        dict_source['total'].append(value.size) 
-
-    return pd.DataFrame(dict_source)
-    
-def cinema_df(df_cinema):
-    df_cinema['espacio_INCAA'] = df_cinema['espacio_INCAA'].replace({'0':np.nan})
-    dict_cinema_province_sum = df_cinema.groupby(['Provincia'],as_index=False)['Pantallas','Butacas'].sum() 
-    dict_cinema_province_count = df_cinema.groupby(['Provincia'],as_index=False)['espacio_INCAA'].count() 
-    return pd.concat([dict_cinema_province_sum,dict_cinema_province_count],axis=1)
-    
-
-
 def run_pipeline():
     """Implements ETL process.
     """
@@ -80,17 +48,13 @@ def run_pipeline():
     log.info('Merging dataframes.')
     df_unified = pd.concat(list(df_transformed.values()))
 
-    log.info('Creating total category registers & Category Province dataframes.')
-    df_total_category_registers, df_unified_cat_prov = combined_df(df_unified)
-    log.info('Creating total source dataframe.')
-    df_source = source_df(df_transformed)
-    log.info('Creating cinema dataframe.')
-    df_cinema = cinema_df(df_list['cinema'])
-    
     #Load
     log.info('Load phase.')
-
-    
+    LoadCinema().load(df_list['cinema'])
+    LoadSource().load(df_transformed)
+    LoadTotalCategoryRegisters().load(df_unified)
+    LoadUnifiedCatProv().load(df_unified)
+    Loader().load(df_unified)
     log.info('Work done!')
     
     
