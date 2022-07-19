@@ -25,9 +25,9 @@ class Loader():
     
     def load(self, df):
         #df to sql creates the  table and replace data if exists.
-        #df.to_sql(self.table_name,con=engine, index=False, if_exists='replace')
+        df.to_sql(self.table_name,con=engine, index=False, if_exists='replace')
         #Another way is to insert manually data.
-        #"""
+        """
         job_date =  datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         df['job_date'] = job_date
         
@@ -50,7 +50,7 @@ class Loader():
             return 1
         log.info("the dataframe is inserted")
         cursor.close()
-       # """
+        """
     
     
 class LoadTotalCategoryRegisters(Loader):
