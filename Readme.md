@@ -38,3 +38,21 @@ Execute command on container
 
 # Usage
 
+* Use this repo with a conda enviroment with all the requeriments packages:
+
+        conda env create -f environment.yml
+    
+* To activate the environment:
+    
+        conda activate data_analitycs
+
+* If you want to execute sql scripts use:
+
+        python script_db.py
+    
+* To execute ETL pipeline:
+
+        python main.py
+    
+    
+
