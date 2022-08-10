@@ -1,7 +1,7 @@
 # Challenge Data Analytics - Python 
 > https://cdn.discordapp.com/attachments/670996715083399199/942821808619520091/Challenge_Data_Analytics_con_Python.pdf
 
-- Objetive:
+- Objective:
 
 * 3 data sources.
 
