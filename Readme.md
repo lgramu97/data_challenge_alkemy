@@ -60,3 +60,6 @@ Execute command on container
         conda list -e > environment.yml
 
 
+# Extras
+
+In the /extras folder u will find 'research_data.ipynb' used to explore data; 'psql commands.txt' with some SQL commands u can execute on postgres db;
