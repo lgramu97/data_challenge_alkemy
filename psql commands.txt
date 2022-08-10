@@ -1,0 +1,84 @@
+Loggin:
+	psql --username=freecodecamp dbname=postgres
+
+List databases:
+	\l
+	
+Create databases:
+	CREATE DATABASE <name_database>;
+	
+Connect database:
+	\c <name_database>
+	
+Create table:
+	CREATE TABLE <name_table>();
+	CREATE TABLE <name_table>(<name_column> DATAYPE CONSTRAINTS);
+	
+List relations (tables):
+	\d
+	
+List columns (attr):
+	\d <name_table>
+	
+Add column table:
+	ALTER TABLE <name_table> ADD COLUMN <name_column> <data_type>;
+	
+Drop column table:
+	ALTER TABLE <name_table> DROP COLUMN <name_column>;
+	
+Rename column table:
+	ALTER TABLE <name_table> RENAME COLUMN <name_column> TO <new_name>;
+	
+Insert data:
+	INSERT INTO <table_name(column_1, column_2)> VALUES(value1, value2),(value3,value4)...;
+	
+View data:
+	SELECT <columns> FROM <name_table>;
+
+Delete data:
+	DELETE FROM <name_table> WHERE <condition>;
+	
+Drop table:
+	DROP TABLE <name_table>;
+
+
+Rename database:
+	ALTER DATABASE <name_database> RENAME TO <new_name>;
+	
+DataTypes:
+	Serial (Not NULL, INT secuencial value) -> For IDS.
+	
+Change value:
+	UPDATE <name_table> SET <name_column>=<new_value> WHERE <condition>;
+	
+Order BY:
+	SELECT <name_columns> FROM <name_table> ORDER BY <name_column>;
+	
+Create PRIMARY KEY:
+	ALTER TABLE <name_table> ADD PRIMARY KEY(<name_column>);
+	ALTER TABLE <name_table> ADD CONSTRAINT KEY_CONSTRAINT PRIMARY KEY (<name_column>);
+	
+Drop constraint key:
+	ALTER TABLE <name_table> DROP CONSTRAINT <name_constraint>;
+	
+Create/Add Foreing key (one-one, many-one,etc):
+	ALTER TABLE <name_table> ADD COLUMN <name_column> <type> REFERENCES <name_table_referenced>(<name_column_referenced>);
+	ALTER TABLE <name_table> ADD FOEIGN KEY(<name_column>) REFERENCES <name_table_referenced>(<name_column_referenced>);
+
+
+Add Unique constraint:
+	ALTER TABLE <name_table> ADD UNIQUE(<name_column>);
+	
+Add NOT NULL to column:
+	ALTER TABLE <name_table> ALTER COLUMN <name_column> SET NOT NULL;
+	
+Select from multiple tables:
+	SELECT <name_columns> FROM <name_table1> FULL JOIN <name_table2> ON <table1_pk> = <table2_fk>; 
+	SELECT columns FROM junction_table
+FULL JOIN table_1 ON junction_table.foreign_key_column = table_1.primary_key_column
+FULL JOIN table_2 ON junction_table.foreign_key_column = table_2.primary_key_column;
+
+EXAMPLE: 
+
+SELECT * FROM character_actions FULL JOIN actions ON actions.action_id = character_actions.action_id FULL JOIN characters ON characters.character_id = character_actions.character_id;
+	

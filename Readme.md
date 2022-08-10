@@ -55,4 +55,8 @@ Execute command on container
         python main.py
     
     
+* Update requeriments:
+
+        conda list -e > environment.yml
+
 
