@@ -1,5 +1,5 @@
 # Challenge Data Analytics - Python 
-> https://cdn.discordapp.com/attachments/670996715083399199/942821808619520091/Challenge_Data_Analytics_con_Python.pdf
+> [PDF](https://drive.google.com/file/d/1ZxBnjsof8yCZx1JVLVaq5DbRjvIIvfJs/view)
 
 - Objective:
 
