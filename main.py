@@ -14,7 +14,9 @@ logging.basicConfig(filename="data_analytics_challenge.log",
                     filemode='w')
 
 log = logging.getLogger()
-   
+
+# Setting the threshold of logger.
+log.setLevel(logging.INFO) 
     
 def extract():
     df_out = {}
